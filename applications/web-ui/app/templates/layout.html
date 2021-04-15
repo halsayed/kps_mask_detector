@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Xi IoT - Face Mask Tracker</title>
+    <link rel="icon" type="image/x-icon" href="./static/favicon.ico">
+
+    <!-- Bootstrap custom CSS -->
+    <link href="./static/css/counter.css" rel="stylesheet">
+    <link href="./static/awesome/css/all.css" rel="stylesheet">
+
+    <script>
+        {% if refreshInterval %}
+        var refreshInterval = {{ refreshInterval }};
+        {% else %}
+        var refreshInterval = 1000;
+        {% endif %}
+    </script>
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container-fluid">
+        <img _ngcontent-c2="" src="./static/xiiot-small.svg" style="height:24px; width:auto;padding-right: 5px">
+        <a class="navbar-brand" href="#"> Nutanix KPS Demo {% if app_name %}- {{ app_name }} {{ version }} {% endif %}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.nutanix.com/products/iot">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+{% block content %}
+{% endblock %}
+<!-- Bootstrap core JavaScript -->
+<script src="./static/jquery/jquery.slim.min.js"></script>
+<script src="./static/js/bootstrap.bundle.min.js"></script>
+<script src="./static/js/data_refresh.js"></script>
+
+</body>
+
+</html>
