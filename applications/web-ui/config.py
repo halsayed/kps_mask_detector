@@ -8,15 +8,11 @@ class Config:
     SHORT_NAME = os.environ.get('SHORT_NAME', 'DemoApp')
     LOCATION = os.environ.get('LOCATION', 'Demo KPS')
     VERSION = 'v0.1'
-    REFRESH_INTERVAL = int(os.environ.get('REFRESH_INTERVAL', 1000))    # msec for page refresh
+    REFRESH_INTERVAL = int(os.environ.get('REFRESH_INTERVAL', 250))    # msec for page refresh
 
     REDIS_HOST = os.environ.get('REDIS_HOST', 'localhost')
     REDIS_PORT = int(os.environ.get('REDIS_PORT', 6379))
     REDIS_DB = int(os.environ.get('REDIS_DB', 0))
-
-    NATS_HOST = os.environ.get('NATS_HOST', 'nats')
-    NATS_PORT = int(os.environ.get('NATS_PORT', '4222'))
-    NATS_SUBJECT = os.environ.get('NAT_SUBJECT', 'KPS')
 
     LOG_LEVEL = os.environ.get('LOG_LEVEL', logging.INFO)
 

@@ -1,0 +1,48 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: web-ui
+  labels:
+    app: web-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-ui
+  template:
+    metadata:
+      labels:
+        app: web-ui
+    spec:
+      containers:
+      - name: redis
+        image: redis:latest
+        ports:
+          - containerPort: 6379
+      - name: nats-redis-gw
+        image: hexadtech/nats-redis-gw:latest
+        env:
+          - name: NATS_HOST
+            value: "nats"
+          - name: NATS_PORT
+            value: "4222"
+          - name: NATS_SUBJECT
+            value: "mask"
+      - name: web-ui
+        image: hexadtech/web-ui:latest
+        ports:
+          - name: ui-http
+            containerPort: 8080
+            hostPort: 8888
+            protocol: TCP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: web-ui-svc
+spec:
+  ports:
+  - port: 8888
+    protocol: TCP
+  selector:
+    app: web-ui

@@ -24,7 +24,8 @@ def create_app(config_name):
     @app.route('/')
     def home():
         latest_values = json.loads(cache.get('values').decode()) if cache.get('values') else []
-        return render_template('index.html', values=latest_values)
+        return render_template('index.html', values=latest_values,
+                               refreshInterval=app.config.get('REFRESH_INTERVAL', 250))
 
     @app.route('/values')
     def values():
